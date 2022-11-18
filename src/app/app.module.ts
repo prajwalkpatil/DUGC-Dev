@@ -9,6 +9,8 @@ import { UploadSheetsComponent } from './upload-sheets/upload-sheets.component';
 import { DugcChairmanComponent } from './dugc-chairman/dugc-chairman.component';
 import { DugcComponent } from './dugc/dugc.component';
 import { CoordinatorComponent } from './coordinator/coordinator.component';
+import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-upload.component';
+import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CoordinatorComponent } from './coordinator/coordinator.component';
     UploadSheetsComponent,
     DugcChairmanComponent,
     DugcComponent,
-    CoordinatorComponent
+    CoordinatorComponent,
+    SingleSheetUploadComponent,
+    ConsolidatedSheetUploadComponent
   ],
   imports: [
     BrowserModule,

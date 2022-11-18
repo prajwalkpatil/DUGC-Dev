@@ -6,6 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   constructor() {}
-
+  thisPage = '';
   ngOnInit(): void {}
 }

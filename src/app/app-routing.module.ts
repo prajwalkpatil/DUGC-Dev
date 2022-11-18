@@ -6,6 +6,8 @@ import { DugcChairmanComponent } from './dugc-chairman/dugc-chairman.component';
 import { DugcComponent } from './dugc/dugc.component';
 import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-upload.component';
+import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,16 @@ const routes: Routes = [
   {
     path: 'coordinator',
     component: CoordinatorComponent,
+    children: [
+      {
+        path: 'single',
+        component: SingleSheetUploadComponent,
+      },
+      {
+        path: 'consolidated',
+        component: ConsolidatedSheetUploadComponent,
+      },
+    ],
   },
 ];
 
