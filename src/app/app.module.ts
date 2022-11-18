@@ -7,6 +7,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { UploadSheetsComponent } from './upload-sheets/upload-sheets.component';
 import { DugcChairmanComponent } from './dugc-chairman/dugc-chairman.component';
+import { DugcComponent } from './dugc/dugc.component';
+import { CoordinatorComponent } from './coordinator/coordinator.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { DugcChairmanComponent } from './dugc-chairman/dugc-chairman.component';
     NavbarComponent,
     MainMenuComponent,
     UploadSheetsComponent,
-    DugcChairmanComponent
+    DugcChairmanComponent,
+    DugcComponent,
+    CoordinatorComponent
   ],
   imports: [
     BrowserModule,

@@ -10,14 +10,15 @@
         </div>
     </div>
     <div class="nav-options">
-        <a href="#">
-            <div class="nav-op">Coordinator</div>
+        <a routerLink="/coordinator">
+            <div class="nav-op" [routerLinkActive]="['selected-option']">Coordinator</div>
         </a>
-        <a href="#">
-            <div class="nav-op">DUGC</div>
+        <a routerLink="/dugc">
+            <div class=" nav-op" [routerLinkActive]="['selected-option']">DUGC
+            </div>
         </a>
-        <a href="#">
-            <div class="nav-op">DUGC Chairman</div>
+        <a routerLink="/dugc_chairman">
+            <div class="nav-op" [routerLinkActive]="['selected-option']">DUGC Chairman</div>
         </a>
     </div>
 </div>

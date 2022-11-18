@@ -75,9 +75,9 @@ a {
 }
 
 
-#selected-option {
-  color: #ffffff;
-  background-color: #C62128;
+.selected-option {
+  color: #ffffff !important;
+  background-color: #C62128 !important;
 }
 
 #disabled-option {
