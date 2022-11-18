@@ -1,1 +1,50 @@
+* {
+  font-family: 'Inter';
+}
 
+.navbar {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 0.7em;
+  border-bottom: 0.3vh solid #C62128;
+}
+
+.nav-des-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+.nav-img-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-des-sub {
+  color: #817f7f;
+  font-weight: 600;
+  letter-spacing: -0.05vw;
+}
+
+.nav-des {
+  color: #C62128;
+  font-weight: 700;
+  font-size: 3vw;
+  letter-spacing: -0.20vw;
+}
+
+
+/* 
+div {
+  border: 2px solid red;
+} */
+
+.nav-logo {
+  max-width: 25vw;
+}
+
+.nav-container {
+  margin: 2em 5em;
+}
