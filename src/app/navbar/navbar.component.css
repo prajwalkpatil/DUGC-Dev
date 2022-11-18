@@ -79,3 +79,8 @@ a {
   color: #ffffff;
   background-color: #C62128;
 }
+
+#disabled-option {
+  opacity: 20%;
+  pointer-events: none;
+}
