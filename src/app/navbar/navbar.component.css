@@ -1,3 +1,8 @@
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -31,12 +36,6 @@
   letter-spacing: -0.20vw;
 }
 
-
-/* 
-div {
-  border: 2px solid red;
-} */
-
 .nav-logo {
   max-width: 25vw;
 }
@@ -52,12 +51,11 @@ div {
   padding-bottom: 0.4em;
 }
 
-
 .nav-op {
   padding: 0.4em 0.9em;
   border: 0.15em solid #C62128;
   border-radius: 0.5em;
-  margin: 0.4em;
+  margin: 0.4em 0.8em;
   font-weight: 600;
   color: #636363;
   letter-spacing: -0.03em;
@@ -76,11 +74,8 @@ div {
   background-color: #C62128;
 }
 
-/* .nav-container {
-  border: 0.15em solid #C62128;
-} */
 
-a {
-  color: inherit;
-  text-decoration: inherit;
+#selected-option {
+  color: #ffffff;
+  background-color: #C62128;
 }
