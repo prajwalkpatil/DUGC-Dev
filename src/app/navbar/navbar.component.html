@@ -10,15 +10,9 @@
         </div>
     </div>
     <div class="nav-options">
-        <a routerLink="/coordinator">
-            <div class="nav-op" [routerLinkActive]="['selected-option']">Coordinator</div>
-        </a>
-        <a routerLink="/dugc">
-            <div class=" nav-op" [routerLinkActive]="['selected-option']">DUGC
-            </div>
-        </a>
-        <a routerLink="/dugc_chairman">
-            <div class="nav-op" [routerLinkActive]="['selected-option']">DUGC Chairman</div>
-        </a>
+        <div class="nav-op" routerLink="/coordinator" [routerLinkActive]="['selected-option']">Coordinator</div>
+        <div class=" nav-op" routerLink="/dugc" [routerLinkActive]="['selected-option']">DUGC
+        </div>
+        <div class="nav-op" routerLink="/dugc_chairman" [routerLinkActive]="['selected-option']">DUGC Chairman</div>
     </div>
 </div>
