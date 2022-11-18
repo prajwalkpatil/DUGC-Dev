@@ -79,3 +79,8 @@ div {
 /* .nav-container {
   border: 0.15em solid #C62128;
 } */
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
