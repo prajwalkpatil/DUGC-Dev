@@ -1,1 +1,76 @@
-<p>consolidated-sheet-upload works!</p>
+<div class="form">
+    <div class="form-text">Please enter the details below: </div>
+    <form class="form-input">
+        <div class="input-section">
+            <div class="input-section-title">
+                <label for="academic_year">Choose the academic year:</label>
+            </div>
+            <div class="input-section-content">
+                <select id="academic_year" name="academic_year" [(ngModel)]="inp.academic_year">
+                    <option value="2022-23">2022-23</option>
+                    <option value="2020-21">2020-21</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-section">
+            <div class="input-section-title">
+                <label for="sem_type">Choose the type of semester:</label>
+            </div>
+            <div class="input-section-content">
+                <select id="sem_type" name="sem_type" [(ngModel)]="inp.type">
+                    <option value="odd">Odd</option>
+                    <option value="even">Even</option>
+                </select>
+            </div>
+        </div>
+        <div *ngIf="inp.type == 'even';">
+            <div class="input-section">
+                <div class="input-section-title">
+                    <label for="semester">Choose the semester:</label>
+                </div>
+                <div class="input-section-content">
+                    <select id="semester" name="semester" [(ngModel)]="inp.semester">
+                        <option value="four" [selected]="true">IV</option>
+                        <option value="six">VI</option>
+                        <option value="eight">VIII</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="inp.type == 'odd';">
+            <div class="input-section">
+                <div class="input-section-title">
+                    <label for="semester">Choose the semester:</label>
+                </div>
+                <div class="input-section-content">
+                    <select id="semester" name="semester" [(ngModel)]="inp.semester">
+                        <option value="three" [selected]="true">III</option>
+                        <option value="five">V</option>
+                        <option value="seven">VII</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="input-section">
+            <div class="input-section-title">
+                <label for="exam">Choose the exam:</label>
+            </div>
+            <div class="input-section-content">
+                <select id="exam" name="exam" [(ngModel)]="inp.exam">
+                    <option value="m1">Minor 1</option>
+                    <option value="m2">Minor 2</option>
+                    <option value="activity">Activity</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-section">
+            <div class="input-section-title">
+                <label for="exam">Choose from the spreadsheets directory:</label>
+            </div>
+            <div class="input-section-content">
+                <input type="file" name="filename" id="filename" accept=".xls,.xlsx" [(ngModel)]="inp.file" required>
+            </div>
+        </div>
+        <button id="submit-upload">Submit</button>
+    </form>
+</div>

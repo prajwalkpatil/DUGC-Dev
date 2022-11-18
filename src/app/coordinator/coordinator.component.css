@@ -38,3 +38,7 @@
   opacity: 20%;
   pointer-events: none;
 }
+
+.container {
+  margin: 0em 1em;
+}

@@ -11,7 +11,7 @@ import { DugcComponent } from './dugc/dugc.component';
 import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-upload.component';
 import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +22,10 @@ import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/co
     DugcComponent,
     CoordinatorComponent,
     SingleSheetUploadComponent,
-    ConsolidatedSheetUploadComponent
+    ConsolidatedSheetUploadComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
