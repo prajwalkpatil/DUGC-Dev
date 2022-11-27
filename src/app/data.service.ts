@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -39,17 +40,9 @@ export class DataService {
       section,
       filename,
     } = data;
-    return this._http.get(`${this.URI}/upload_sheets`, {
-      params: {
-        academic_year,
-        sem_type,
-        semester,
-        course,
-        exam,
-        section,
-        filename,
-      },
-    });
+    console.log('Making a get request', data);
+    const headers = new HttpHeaders();
+    return this._http.post(`${this.URI}/upload_sheets`, data);
   }
 
   uploadMultipleSheets(data: any) {

@@ -10,7 +10,6 @@ let constants = require('../src/constants.json')
 const { listenerCount } = require("process");
 const excelToJson = require('convert-excel-to-json');
 var fileManager = require('express-file-manager');
-
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -30,10 +29,7 @@ const getCourseName = function (code, course_file) {
         }
     }
 }
-app.get("/", (req, res) => {
-    console.log("On home-page.");
-    res.render("home");
-})
+
 
 app.get('/filemanager/raw%5C:fileName', function (req, res) {
     const { fileName } = req.params;
@@ -57,9 +53,10 @@ app.get("/filemanager/browse%5C:addr", (req, res) => {
     }
 })
 
-app.get("/upload_sheets", (req, res) => {
+app.post("/upload_sheets", (req, res) => {
     let this_year = "2022-23";
-    const { academic_year, sem_type, semester, course, exam, section, filename } = req.query;
+    const { academic_year, sem_type, semester, course, exam, section, filename } = req.body;
+    console.log("Result => ", req.body);
     let new_data = data_file;
     let read_result = {};
     let index = 0;
@@ -73,15 +70,17 @@ app.get("/upload_sheets", (req, res) => {
     else {
         index = 2;
     }
-
+    let f = filename.split('\\')
+    let file_name = f[f.length - 1]
+    console.log(file_name)
     try {
         result = excelToJson({
-            sourceFile: "./spreadsheets/" + filename
+            sourceFile: "./spreadsheets/" + file_name
         });
     }
     catch (err) {
         console.log("File not found!");
-        res.render("coordinator")
+        // res.render("coordinator")
     }
     let result_keys = Object.keys(result);
     // console.log(result);
@@ -111,9 +110,10 @@ app.get("/upload_sheets", (req, res) => {
 })
 
 
-app.get("/upload_multiple_sheets", (req, res) => {
+app.post("/upload_multiple_sheets", (req, res) => {
     let this_year = "2022-23";
-    const { academic_year, sem_type, semester, course, exam, filename } = req.query;
+    const { academic_year, sem_type, semester, course, exam, filename } = req.params;
+    console.log("Result => ", req.query);
     let new_data = data_file;
     let read_result_array = [];
     var read_result = {};
@@ -128,15 +128,17 @@ app.get("/upload_multiple_sheets", (req, res) => {
     else {
         index = 2;
     }
-
+    let f = filename.split('\\')
+    let file_name = f[f.length - 1]
+    console.log(file_name)
     try {
         result = excelToJson({
-            sourceFile: "./spreadsheets/" + filename
+            sourceFile: "./spreadsheets/" + file_name
         });
     }
     catch (err) {
         console.log("File not found!");
-        res.render("coordinator")
+        // res.render("coordinator")
     }
     let sheets_all = []
     let sections_all = ['A', 'B', 'C', 'D', 'E'];
@@ -309,6 +311,11 @@ app.get("/analysis", (req, res) => {
     let new_data = data_file;
     console.log("On DUGC page.");
     res.json({ new_data, dataParticulars, dataCourses, dataSections, dataExams, course_file, getScore });
+})
+
+app.get("/", (req, res) => {
+    console.log("On home-page.");
+    res.render("home");
 })
 
 app.get("/single_sheet", (req, res) => {

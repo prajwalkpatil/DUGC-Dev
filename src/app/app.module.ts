@@ -13,6 +13,8 @@ import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-u
 import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
 import { FormsModule } from '@angular/forms';
 import { UploadStatusComponent } from './upload-status/upload-status.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,14 @@ import { UploadStatusComponent } from './upload-status/upload-status.component';
     ConsolidatedSheetUploadComponent,
     UploadStatusComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
