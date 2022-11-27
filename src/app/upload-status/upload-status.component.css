@@ -1,0 +1,45 @@
+/* div {
+  border: 2px solid red;
+} */
+* {
+  letter-spacing: -0.02em;
+}
+
+.us-section-title {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 1.2em 0 0.5em 0;
+}
+
+.us-heading {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.us-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.us-section-content {
+  display: flex;
+}
+
+.us-section-name {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0 0.4em;
+}
+
+.us-section-icon img {
+  height: 1.2em;
+}
+
+.course_code {
+  font-weight: 700;
+}
+
+.us-section-swatch {
+  display: flex;
+  padding-right: 0.8em;
+}

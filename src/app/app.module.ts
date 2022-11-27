@@ -12,6 +12,7 @@ import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-upload.component';
 import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
 import { FormsModule } from '@angular/forms';
+import { UploadStatusComponent } from './upload-status/upload-status.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     CoordinatorComponent,
     SingleSheetUploadComponent,
     ConsolidatedSheetUploadComponent,
+    UploadStatusComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { UploadStatusComponent } from '../upload-status/upload-status.component';
 @Component({
   selector: 'app-coordinator',
   templateUrl: './coordinator.component.html',
