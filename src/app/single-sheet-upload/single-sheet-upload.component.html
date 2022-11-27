@@ -17,19 +17,19 @@
                 <label for="sem_type">Choose the type of semester:</label>
             </div>
             <div class="input-section-content">
-                <select id="sem_type" name="sem_type" [(ngModel)]="inp.type">
+                <select id="sem_type" name="sem_type" [(ngModel)]="inp.sem_type">
                     <option value="odd">Odd</option>
                     <option value="even">Even</option>
                 </select>
             </div>
         </div>
-        <div *ngIf="inp.type == 'even';">
+        <div *ngIf="inp.sem_type == 'even';">
             <div class="input-section">
                 <div class="input-section-title">
                     <label for="semester">Choose the semester:</label>
                 </div>
                 <div class="input-section-content">
-                    <select id="semester" name="semester" [(ngModel)]="inp.semester">
+                    <select id="semester" name="semester" [(ngModel)]="inp.semester" (change)="changeCourses()">
                         <option value="four" [selected]="true">IV</option>
                         <option value="six">VI</option>
                         <option value="eight">VIII</option>
@@ -37,18 +37,30 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="inp.type == 'odd';">
+        <div *ngIf="inp.sem_type == 'odd';">
             <div class="input-section">
                 <div class="input-section-title">
                     <label for="semester">Choose the semester:</label>
                 </div>
                 <div class="input-section-content">
-                    <select id="semester" name="semester" [(ngModel)]="inp.semester">
+                    <select id="semester" name="semester" [(ngModel)]="inp.semester" (change)="changeCourses()">
                         <option value="three" [selected]="true">III</option>
                         <option value="five">V</option>
                         <option value="seven">VII</option>
                     </select>
                 </div>
+            </div>
+        </div>
+        <div class="input-section">
+            <div class="input-section-title">
+                <label for="course">Choose the course:</label>
+            </div>
+            <div class="input-section-content">
+                <select id="course" name="course" [(ngModel)]="inp.course">
+                    <option *ngFor="let item of selectedCourse|keyvalue" value={item.key}>
+                        {{item.key}} - {{item.value}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="input-section">
@@ -82,7 +94,8 @@
                 <label for="exam">Choose from the spreadsheets directory:</label>
             </div>
             <div class="input-section-content">
-                <input type="file" name="filename" id="filename" accept=".xls,.xlsx" [(ngModel)]="inp.file" required>
+                <input type="file" name="filename" id="filename" accept=".xls,.xlsx" [(ngModel)]="inp.filename"
+                    required>
             </div>
         </div>
         <button id="submit-upload">Submit</button>
