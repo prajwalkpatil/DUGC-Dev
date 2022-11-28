@@ -12,7 +12,6 @@ import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-upload.component';
 import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
 import { FormsModule } from '@angular/forms';
-import { UploadStatusComponent } from './upload-status/upload-status.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
@@ -26,7 +25,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoordinatorComponent,
     SingleSheetUploadComponent,
     ConsolidatedSheetUploadComponent,
-    UploadStatusComponent,
   ],
   imports: [
     BrowserModule,

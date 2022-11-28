@@ -55,3 +55,63 @@
   padding: 0.1em;
   font-size: 1em;
 }
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+* {
+  letter-spacing: -0.02em;
+}
+
+.us-section-title {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 1.2em 0 0.5em 0;
+}
+
+.us-section-subtitle {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0 0.8em 0 0;
+}
+
+.us-heading {
+  margin-top: 1em;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.us-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.us-section-content {
+  display: flex;
+}
+
+.us-section-name {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0 0.4em;
+}
+
+.us-section-icon img {
+  height: 1.2em;
+}
+
+.course_code {
+  font-weight: 700;
+}
+
+.us-section-swatch {
+  display: flex;
+  padding-right: 0.8em;
+}
+
+.us-subsection {
+  display: flex;
+  margin-top: 0.5em;
+}

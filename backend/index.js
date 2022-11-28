@@ -326,6 +326,7 @@ app.get("/single_sheet", (req, res) => {
 app.get("/get_courses", (req, res) => {
     let new_data = data_file;
     console.log("On get course page");
+    console.log(course_file);
     res.json({ course_file });
 })
 

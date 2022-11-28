@@ -27,6 +27,12 @@ export class ConsolidatedSheetUploadComponent implements OnInit {
       Activity: 'Yes',
     },
   };
+  coursesWithNames: any = {
+    course_code: 'Course_name',
+  };
+  sections: any = ['A', 'B', 'C', 'D', 'E'];
+  exams: any = ['Minor 1', 'Minor 2', 'Activity'];
+  analysis: any = {};
   statusMessage = '';
   courses: any = [];
   changeCourses(): void {
@@ -39,13 +45,17 @@ export class ConsolidatedSheetUploadComponent implements OnInit {
   }
   onSubmit(): void {
     console.log("You've called the submit function.");
-    this.dataService.uploadSheets(this.inp).subscribe((res) => {
-      console.log(res);
-    });
+    this.dataService.uploadSheets(this.inp).subscribe(
+      (resp) => {
+        console.log(resp);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   validateInput(): boolean {
     for (let i in this.inp) {
-      console.log(i);
       if (this.inp[i] == ' ' || !this.inp[i]) {
         return false;
       }
@@ -71,15 +81,53 @@ export class ConsolidatedSheetUploadComponent implements OnInit {
     };
     this.statusMessage = '';
   }
+
+  isComplete(exam: any, section: any): boolean {
+    try {
+      let exam_index: number = 0;
+      if (exam == 'Minor 1') {
+        exam_index = 0;
+      } else if (exam == 'Minor 2') {
+        exam_index = 1;
+      } else {
+        exam_index = 2;
+      }
+      let data =
+        this.analysis['new_data'][this.inp.academic_year][this.inp.semester][
+          this.inp.course
+        ][exam_index][section];
+      if (data == '' || !data) {
+        return false;
+      }
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
   ngOnInit(): void {
     this.dataService.getCourses().subscribe(
       (resp) => {
         this.courses = resp;
         this.courses = this.courses.course_file;
         console.log('Courses initialized.');
+        for (const [i, j] of Object.entries(this.courses)) {
+          for (const [k, l] of Object.entries(this.courses[i])) {
+            this.coursesWithNames[k] = this.courses[i][k]['Name'];
+          }
+        }
       },
       (error) => {
         this.toastr.error('Cannot connect to server', 'Server error!');
+      }
+    );
+    this.dataService.getAnalysis().subscribe(
+      (res) => {
+        this.analysis = res;
+        console.log('Analysis initialized');
+      },
+      (error) => {
+        this.toastr.error('Cannot connect to the server.', 'Server error!');
       }
     );
   }
