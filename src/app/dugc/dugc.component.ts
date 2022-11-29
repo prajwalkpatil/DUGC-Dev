@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
-import { GetAnalysisService } from '../get-analysis.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -26,8 +25,7 @@ export class DugcComponent implements OnInit {
   inp_exam: any;
 
   constructor(private dataService: DataService,
-    private router: Router,
-    private get-analysis: GetAnalysisService
+    private router: Router
   ) {}
 
   ngOnInit() : void {
