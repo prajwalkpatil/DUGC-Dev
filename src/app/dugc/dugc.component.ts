@@ -41,6 +41,10 @@ export class DugcComponent implements OnInit {
     // );
   }
   goToURL() {
+      console.log(this.inp_sem_num);
+      console.log(this.inp_exam);
+      this.dataService.in_sem_val = this.inp_sem_num;
+      this.dataService.in_exam = this.inp_exam;
     this.router.navigate(['/charts']);
   }
 

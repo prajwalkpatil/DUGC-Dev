@@ -16,7 +16,7 @@ const routes: Routes = [
     component: DugcChairmanComponent,
   },
   { path: 'dugc', component: DugcComponent },
-  {path: 'charts', component: ChartsComponent },
+  { path: 'charts', component: ChartsComponent },
   {
     path: 'coordinator',
     component: CoordinatorComponent,
