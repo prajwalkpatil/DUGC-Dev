@@ -76,7 +76,23 @@ export class DugcChairmanComponent implements OnInit {
       this.statusMessage = '';
       this.onSubmit();
       this.toastr.success('Course added', this.inp.course_code );
+      this.initializeCourses();
     }
+  }
+  initializeCourses() : void {
+    this.dataService.getCourses().subscribe(
+      (resp)=> {
+        this.courses = resp;
+        this.courses = this.courses.course_file;
+        for (let [i, j] of Object.entries(this.courses)) {
+          for(let[k ,l] of Object.entries(this.courses[i]))
+          {
+            this.course_codes.push(`${k}`);
+          }
+        }
+        console.log("Courses initialized");
+      }
+    )
   }
   resetForm(): void {
     this.inp = {
@@ -92,18 +108,9 @@ export class DugcChairmanComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.dataService.getCourses().subscribe(
-      (resp)=> {
-        this.courses = resp;
-        this.courses = this.courses.course_file;
-        for (let [i, j] of Object.entries(this.courses)) {
-          for(let[k ,l] of Object.entries(this.courses[i]))
-          {
-            this.course_codes.push(`${k}`);
-          }
-        }
-        console.log("Courses initialized");
-      }
-    )
+
+    this.initializeCourses();
+
+    
   }
 }
