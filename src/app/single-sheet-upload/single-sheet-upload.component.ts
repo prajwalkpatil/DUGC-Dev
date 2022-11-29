@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { StatusService } from '../status.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-single-sheet-upload',
   templateUrl: './single-sheet-upload.component.html',
@@ -10,7 +11,9 @@ import { ToastrService } from 'ngx-toastr';
 export class SingleSheetUploadComponent implements OnInit {
   constructor(
     private dataService: DataService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private statusService: StatusService,
+    private router: Router
   ) {}
   inp: any = {
     academic_year: '2022-23',
@@ -49,6 +52,9 @@ export class SingleSheetUploadComponent implements OnInit {
     this.dataService.uploadSheets(this.inp).subscribe(
       (resp) => {
         console.log(resp);
+        this.statusService.isUploaded = true;
+        this.statusService.setResult(resp);
+        this.router.navigate(['/coordinator/upload_status']);
       },
       (error) => {
         console.log(error);
