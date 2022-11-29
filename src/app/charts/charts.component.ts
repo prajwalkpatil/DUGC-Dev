@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetAnalysisService } from '../get-analysis.service';
 
 @Component({
   selector: 'app-charts',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { GetAnalysisService } from '../get-analysis.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -25,22 +26,23 @@ export class DugcComponent implements OnInit {
   inp_exam: any;
 
   constructor(private dataService: DataService,
-    private router: Router) {}
+    private router: Router,
+    private get-analysis: GetAnalysisService
+  ) {}
 
   ngOnInit() : void {
-    this.dataService.getAnalysis().subscribe(
-      (resp) => {
-        this.analysis = resp;
-        console.log(this.analysis['new_data']);
-        this.analysis1 = this.analysis['new_data'][this.academic_year];
-        this.analysis2 = this.analysis['new_data'][this.prev_year];
-        console.log(this.analysis1);
-        console.log(this.analysis2);
-      }
-    );
+    // this.dataService.getAnalysis().subscribe(
+    //   (resp) => {
+    //     this.analysis = resp;
+    //     console.log(this.analysis['new_data']);
+    //     this.analysis1 = this.analysis['new_data'][this.academic_year];
+    //     this.analysis2 = this.analysis['new_data'][this.prev_year];
+    //     console.log(this.analysis1);
+    //     console.log(this.analysis2);
+    //   }
+    // );
   }
   goToURL() {
-    console.log()
     this.router.navigate(['/charts']);
   }
 

@@ -34,7 +34,7 @@
             <label for="semester">Choose the semester:</label>
         </div>
         <div class="input-section-content">
-            <select id="semester" name="semester">
+            <select id="semester" name="semester" [(ngModel)]="inp_sem_num">
                 <option disabled value="" [selected]=true></option>
                 <option value="three" [selected]="true">III - three</option>
                 <option value="five">V - five</option>
