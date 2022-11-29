@@ -8,6 +8,7 @@ import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-upload.component';
 import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
+import { ChartsComponent } from './charts/charts.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
     component: DugcChairmanComponent,
   },
   { path: 'dugc', component: DugcComponent },
+  {path: 'charts', component: ChartsComponent },
   {
     path: 'coordinator',
     component: CoordinatorComponent,
