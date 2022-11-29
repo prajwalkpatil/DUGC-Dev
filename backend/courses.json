@@ -6,6 +6,7 @@
       "Minor 2": "Yes",
       "Activity": "Yes"
     }
+    
   },
   "four": {
     "21ECSC210": {
@@ -53,14 +54,7 @@
       "Activity": "Yes"
     }
   },
-  "six": {
-    "22ECSC301": {
-      "Name": "DJ WALE",
-      "Minor 1": "Yes",
-      "Minor 2": "Yes",
-      "Activity": "Yes"
-    }
-  },
+  "six": {},
   "seven": {},
   "eight": {}
 }
