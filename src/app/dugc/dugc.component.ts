@@ -13,12 +13,6 @@ export class DugcComponent implements OnInit {
   sections: any = ['A', 'B', 'C', 'D', 'E'];
   exams : any = ['Minor 1', 'Minor 2', 'Activity'];
   sems : any = ['three', 'four', 'five', 'six', 'seven', 'eight'];
-  academic_year: any = '2022-23';
-  prev_year : any = '2020-21';
-  dataParticulars : any = [];
-  analysis1: any = {};
-  analysis2: any = {};
-  analysis: any = {};
 
   inp_sem_type: any;
   inp_sem_num: any;
@@ -29,20 +23,9 @@ export class DugcComponent implements OnInit {
   ) {}
 
   ngOnInit() : void {
-    // this.dataService.getAnalysis().subscribe(
-    //   (resp) => {
-    //     this.analysis = resp;
-    //     console.log(this.analysis['new_data']);
-    //     this.analysis1 = this.analysis['new_data'][this.academic_year];
-    //     this.analysis2 = this.analysis['new_data'][this.prev_year];
-    //     console.log(this.analysis1);
-    //     console.log(this.analysis2);
-    //   }
-    // );
+
   }
   goToURL() {
-      console.log(this.inp_sem_num);
-      console.log(this.inp_exam);
       this.dataService.in_sem_val = this.inp_sem_num;
       this.dataService.in_exam = this.inp_exam;
     this.router.navigate(['/charts']);

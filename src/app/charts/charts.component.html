@@ -1,9 +1,8 @@
 <h3>Analysis Report</h3>
 <br>
 
-
-<div class="container">
-  <h4>Analysis for {{exam_val}} | Sem {{sem_val}} | {{this_year}}
+<div class="container" >
+  <h4>Analysis for {{exam_val2}} | Sem {{sem_val}} | {{this_year}}
     </h4>
 
 <div class="table-responsive-md">
@@ -72,10 +71,16 @@
 					<td>D div</td>
 					<td>E div</td>
 				</tr>
+        <tr *ngFor="let course_item of course_codes; let myIndex = index">
+          <td>{{myIndex}}</td>
+          <td>{{course_item}}</td>
+        </tr>
     </table>
   </div>
 </div>
 
+<br>
+<br>
 <h3>Visualizations</h3>
 
 <div class="chart-display" id="chart-display">
@@ -120,6 +125,6 @@
 										<canvas id="myChart10" style="width:0%;max-width:0px"></canvas>
 									</div>
 </div>
-
+<button class="submit-upload" (click)="runThis()">Submit</button>
 <br />
 <button onclick="window.print()" class="print no-print" id="printButton">Print Report</button>
