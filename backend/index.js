@@ -30,7 +30,6 @@ const getCourseName = function (code, course_file) {
     }
 }
 
-
 app.get('/filemanager/raw%5C:fileName', function (req, res) {
     const { fileName } = req.params;
     const file = `./spreadsheets/${fileName}`;
@@ -112,8 +111,8 @@ app.post("/upload_sheets", (req, res) => {
 
 app.post("/upload_multiple_sheets", (req, res) => {
     let this_year = "2022-23";
-    const { academic_year, sem_type, semester, course, exam, filename } = req.params;
-    console.log("Result => ", req.query);
+    const { academic_year, sem_type, semester, course, exam, filename } = req.body;
+    console.log("Result => ", req.body);
     let new_data = data_file;
     let read_result_array = [];
     var read_result = {};

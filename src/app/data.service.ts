@@ -47,15 +47,8 @@ export class DataService {
 
   uploadMultipleSheets(data: any) {
     const { academic_year, sem_type, semester, course, exam, filename } = data;
-    return this._http.get(`${this.URI}/upload_multiple_sheets`, {
-      params: {
-        academic_year,
-        sem_type,
-        semester,
-        course,
-        exam,
-        filename,
-      },
-    });
+    console.log('Making a get request', data);
+    const headers = new HttpHeaders();
+    return this._http.post(`${this.URI}/upload_multiple_sheets`, data);
   }
 }

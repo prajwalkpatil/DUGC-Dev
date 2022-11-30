@@ -39,7 +39,11 @@ export class StatusService {
   setResult(data: any): void {
     this.isUploaded = true;
     this.result = data;
-    if (this.result.read_result.Average == '') {
+    try {
+      if (this.result.read_result.Average == '') {
+        this.isConsolidated = true;
+      }
+    } catch (c) {
       this.isConsolidated = true;
     }
     console.log('Result set');

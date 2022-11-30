@@ -17,10 +17,11 @@ export class ConsolidatedSheetUploadComponent implements OnInit {
   ) {}
   inp: any = {
     academic_year: '2022-23',
+    sem_type: '',
     semester: '',
-    type: '',
+    course: '',
     exam: '',
-    file: '',
+    filename: '',
   };
   selectedCourse = {
     course_code: {
@@ -47,11 +48,12 @@ export class ConsolidatedSheetUploadComponent implements OnInit {
     }
   }
   onSubmit(): void {
-    console.log("You've called the submit function.");
-    this.dataService.uploadSheets(this.inp).subscribe(
+    console.log("You've called the submit function.", this.inp);
+    this.dataService.uploadMultipleSheets(this.inp).subscribe(
       (resp) => {
         console.log(resp);
         this.statusService.isUploaded = true;
+        this.statusService.isConsolidated = true;
         this.statusService.setResult(resp);
         this.router.navigate(['/coordinator/upload_status']);
       },

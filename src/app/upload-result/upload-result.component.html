@@ -1,7 +1,6 @@
 <div *ngIf="isConsolidated;else singleBlock">
     <div class="status-container">
         <div class="title">Upload Successful!</div>
-
         <div *ngFor="let res of result.read_result_array;let i = index" [attr.data-index]="i">
             <div class="status-content">
                 <div class="status-div">
@@ -62,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="upload-status-main">
+                <div [ngClass]="{'is-hidden': i != 0}" class="upload-status-main">
                     <div *ngIf="result.course != '' && result.semester != '' && result.academic_year != '2021-22';">
                         <div class="us-heading">Upload Status</div>
                         <div class="us-section">
@@ -96,6 +95,9 @@
                         </div>
                     </div>
                 </div>
+                <ng-template #NoStatus>
+                    <div></div>
+                </ng-template>
             </div>
         </div>
     </div>

@@ -19,14 +19,14 @@
                         <label for="sem_type">Choose the type of semester:</label>
                     </div>
                     <div class="input-section-content">
-                        <select id="sem_type" name="sem_type" [(ngModel)]="inp.type">
+                        <select id="sem_type" name="sem_type" [(ngModel)]="inp.sem_type">
                             <option disabled value="" [selected]=true></option>
                             <option value="odd">Odd</option>
                             <option value="even">Even</option>
                         </select>
                     </div>
                 </div>
-                <div *ngIf="inp.type == 'even';">
+                <div *ngIf="inp.sem_type == 'even';">
                     <div class="input-section">
                         <div class="input-section-title">
                             <label for="semester">Choose the semester:</label>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="inp.type == 'odd';">
+                <div *ngIf="inp.sem_type == 'odd';">
                     <div class="input-section">
                         <div class="input-section-title">
                             <label for="semester">Choose the semester:</label>
@@ -87,7 +87,7 @@
                         <label for="exam">Choose from the spreadsheets directory:</label>
                     </div>
                     <div class="input-section-content">
-                        <input type="file" name="filename" id="filename" accept=".xls,.xlsx" [(ngModel)]="inp.file"
+                        <input type="file" name="filename" id="filename" accept=".xls,.xlsx" [(ngModel)]="inp.filename"
                             required>
                     </div>
                 </div>
