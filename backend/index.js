@@ -289,7 +289,7 @@ app.get("/delete_sheet",(req,res)=>{
   {
     exam_index = 1;
   }
-  else if(exam == "Activity")
+  else 
   {
     exam_index = 2;
   }

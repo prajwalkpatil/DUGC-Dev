@@ -71,6 +71,7 @@ export class DeleteSheetComponent implements OnInit {
       this.statusMessage = '';
       this.onSubmit();
       this.toastr.success('Sheet Deleted', this.inp.course + "\n" + this.inp.section + "\n" + this.inp.exam);
+      this.getNewAnalysis();
     }
   }
   resetForm(): void {
@@ -106,7 +107,17 @@ export class DeleteSheetComponent implements OnInit {
       return false;
     }
   }
-
+  getNewAnalysis():any{
+    this.dataService.getAnalysis().subscribe(
+      (res) => {
+        this.analysis = res;
+        console.log('Analysis initialized');
+      },
+      (error) => {
+        this.toastr.error('Cannot connect to the server.', 'Server error!');
+      }
+    );
+  }
   ngOnInit(): void {
     this.dataService.getCourses().subscribe(
       (resp) => {
