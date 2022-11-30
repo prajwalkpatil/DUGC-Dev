@@ -275,7 +275,33 @@ const getTotalScore = function (examInput, sectionInput, particularInput, given_
     }
     return score;
 }
+app.get("/delete_sheet",(req,res)=>{
+  let this_year  = "2022-23";
+  let exam_index = 0;
+  let { academic_year  , semester , course , exam , section } = req.query;
 
+  let new_data = data_file;
+  if(exam == 'm1')
+  {
+    exam_index = 0;
+  }
+  else if(exam == 'm2')
+  {
+    exam_index = 1;
+  }
+  else if(exam == "Activity")
+  {
+    exam_index = 2;
+  }
+
+  delete new_data[this_year][semester][course][exam_index][section]
+  
+  fs.writeFile("data-copy.json", JSON.stringify(new_data), () => {
+    console.log("Done writing!");
+    res.json({new_data});
+});
+
+})
 app.get("/dugc", (req, res) => {
     let this_year = "2022-23";
     let exam_index = 0;

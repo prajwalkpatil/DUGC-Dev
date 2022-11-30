@@ -61,18 +61,5 @@
   },
   "six": {},
   "seven": {},
-  "eight": {
-    "22ECSC309": {
-      "Name": "fgsdfg",
-      "Minor 1": "Yes",
-      "Minor 2": "Yes",
-      "Activity": "Yes"
-    },
-    "2ECSC303": {
-      "Name": "fgsdfg",
-      "Minor 1": "Yes",
-      "Minor 2": "Yes",
-      "Activity": "Yes"
-    }
-  }
+  "eight": {}
 }
