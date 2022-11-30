@@ -12,8 +12,8 @@
 					<td rowspan="3"><b>Course code</b></td>
 					<td colspan="25"><b>No. of students scoring, marks</b></td>
 					<td colspan="5" rowspan="2"><b>Total students</b></td>
-					<td colspan="5" rowspan="2"><b>Average Marks <%=this_year%></b></td>
-					<td colspan="5" rowspan="2"><b>Average Marks Prev year</b></td>
+					<td colspan="5" rowspan="2"><b>Average Marks {{this_year}}</b></td>
+					<td colspan="5" rowspan="2"><b>Average Marks {{prev_year}}</b></td>
 				</tr>
 				<tr>
 					<td colspan="5"><b>0-4</b></td>
@@ -74,14 +74,13 @@
         <tr *ngFor="let course_item of course_codes; let myIndex = index">
           <td>{{myIndex + 1}}</td>
           <td>{{course_item}}</td>
-          <td  *ngFor="let num1 of a1">{{num1}}</td>
+          <td  *ngFor="let num1 of a1; let inIndex = index">{{a1[inIndex]}}</td>
           <td *ngFor="let num1 of a2">{{num1}}</td>
           <td *ngFor="let num1 of a3">{{num1}}</td>
           <td *ngFor="let num1 of a4">{{num1}}</td>
           <td *ngFor="let num1 of a5">{{num1}}</td>
           <td *ngFor="let num1 of avg">{{num1}}</td>
           <td *ngFor="let num1 of aT">{{num1}}</td>
-
         </tr>
     </table>
   </div>
