@@ -29,6 +29,7 @@ export class DataService {
       params: { data_file, course_file },
     });
   }
+  
 
   uploadSheets(data: any) {
     const {
@@ -44,6 +45,28 @@ export class DataService {
     const headers = new HttpHeaders();
     return this._http.post(`${this.URI}/upload_sheets`, data);
   }
+
+   createCourse( data :any )
+   {
+     const { semester , course_code , course_name } = data;
+     return this._http.get(`${this.URI}/create_course`, {
+       params : {
+          semester ,
+          course_code,
+          course_name
+       }
+     })
+   }
+
+   deleteSheet(data : any)
+   {
+      const { academic_year , semester , course, exam , section } = data;
+      return this._http.get(`${this.URI}/delete_sheet`,{
+        params : {
+          academic_year  , semester , course , exam , section 
+        }
+      })
+   }
 
   uploadMultipleSheets(data: any) {
     const { academic_year, sem_type, semester, course, exam, filename } = data;

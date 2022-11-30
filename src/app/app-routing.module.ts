@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SingleSheetUploadComponent } from './single-sheet-upload/single-sheet-upload.component';
 import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/consolidated-sheet-upload.component';
 import { UploadResultComponent } from './upload-result/upload-result.component';
+import { DeleteSheetComponent } from './delete-sheet/delete-sheet.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'consolidated',
         component: ConsolidatedSheetUploadComponent,
+      },
+      {
+        path: 'delete',
+        component: DeleteSheetComponent,
       },
       {
         path: 'upload_status',
