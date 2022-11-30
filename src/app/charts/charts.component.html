@@ -72,8 +72,16 @@
 					<td>E div</td>
 				</tr>
         <tr *ngFor="let course_item of course_codes; let myIndex = index">
-          <td>{{myIndex}}</td>
+          <td>{{myIndex + 1}}</td>
           <td>{{course_item}}</td>
+          <td  *ngFor="let num1 of a1">{{num1}}</td>
+          <td *ngFor="let num1 of a2">{{num1}}</td>
+          <td *ngFor="let num1 of a3">{{num1}}</td>
+          <td *ngFor="let num1 of a4">{{num1}}</td>
+          <td *ngFor="let num1 of a5">{{num1}}</td>
+          <td *ngFor="let num1 of avg">{{num1}}</td>
+          <td *ngFor="let num1 of aT">{{num1}}</td>
+
         </tr>
     </table>
   </div>
@@ -125,6 +133,5 @@
 										<canvas id="myChart10" style="width:0%;max-width:0px"></canvas>
 									</div>
 </div>
-<button class="submit-upload" (click)="runThis()">Submit</button>
 <br />
 <button onclick="window.print()" class="print no-print" id="printButton">Print Report</button>

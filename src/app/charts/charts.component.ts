@@ -21,12 +21,20 @@ export class ChartsComponent implements OnInit {
   analysis1: any = {};  // this_year data
   analysis2: any = {};  // prev_year data
   analysis: any = {};
+  tempanalysis: any = {};
+  temparr: any = {};
   sno : any = 0;
-
-
 
   course_count : number = 0;
   course_codes : any = [];
+  a1:any = [" ", " ", " ", " ", " "];
+  a2:any = [" ", " ", " ", " ", " "];
+  a3:any = [" ", " ", " ", " ", " "];
+  a4:any = [" ", " ", " ", " ", " "];
+  a5:any = [" ", " ", " ", " ", " "];
+  aT:any = [" ", " ", " ", " ", " "];
+  avg:any = [" ", " ", " ", " ", " "];
+  div_count :number = 0;
   runThis() {
     this.analysis1 = this.analysis1[this.sem_val];
     this.analysis2 = this.analysis2[this.sem_val];
@@ -55,21 +63,46 @@ export class ChartsComponent implements OnInit {
         this.analysis2 = this.analysis['new_data'][this.prev_year][this.sem_val];
         console.log(this.analysis1);
         console.log(this.analysis2);
-        for (const [i,j] of Object.entries(this.analysis1)) {
+        for (let [i,j] of Object.entries(this.analysis1)) {
           this.course_codes.push(i);
           this.course_count = this.course_count + 1;
-        }
-        console.log(this.course_codes);
-        // if(this.exam_val === 'm1') {
-        //   this.analysis1 = this.analysis1[0];
-        // }
-        // else if(this.exam_val === 'm2') {
-        //   this.analysis1 = this.analysis1[1];
-        // }
-        // else {
-        //   this.analysis1 = this.analysis1[2];
-        // }
-      }
+          for (let k of this.analysis1[i]) {
+              this.tempanalysis = k;
+                this.temparr = this.tempanalysis[this.sections[this.div_count]];
+                if (typeof this.temparr != "undefined"){
+                  for(let [i,j] of Object.entries(this.temparr)) {
+                    if(i == 'A') {
+                      this.a1[this.div_count] = String(j);
+                    }
+                    else if(i == 'B') {
+                      this.a2[this.div_count] = String(j);
+                    }
+                    else if(i == 'C') {
+                      this.a3[this.div_count] = String(j);
+                    }
+                    else if(i == 'D') {
+                      this.a4[this.div_count] = String(j);
+                    }
+                    else if(i == 'S') {
+                      this.a5[this.div_count] = String(j);
+                    }
+                    else if(i == 'Total') {
+                      this.aT[this.div_count] = String(j);
+                    }
+                    else if(i == 'Average') {
+                      this.avg[this.div_count] = String(j);
+                    }
+                    else {
+                      this.avg[this.div_count] = " ";
+                    }
+                  }
+                }
+                console.log(this.a1);
+                this.div_count = this.div_count + 1;
+              }
+              this.div_count = 0;
+            }
+          }
     );
   }
 
