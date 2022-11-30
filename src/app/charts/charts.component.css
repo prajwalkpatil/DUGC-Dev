@@ -1,3 +1,8 @@
+* {
+  letter-spacing: -0.035em;
+}
+
+
 #printButton {
   padding: 0.4em 0.9em;
   border: 0.15em solid #C62128;
@@ -27,13 +32,31 @@ td {
   border: 1px solid black;
   text-align: center;
 } */
-table ,td ,th {
+table,
+td,
+th {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: center;
 }
-.charts{
+
+.charts {
   display: flex;
   flex-direction: row;
-  gap : 1em;
+  gap: 1em;
+}
+
+.chart-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2em;
+}
+
+.chart-row div:first-of-type {
+  margin-right: 5em;
 }
