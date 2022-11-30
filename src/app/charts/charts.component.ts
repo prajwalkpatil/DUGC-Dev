@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import Chart from 'chart.js/auto';
 import { DxChartModule } from 'devextreme-angular';
 
+
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
@@ -168,8 +169,6 @@ export class ChartsComponent implements OnInit {
                   data: y2Values
                 }]
                 }
-                // ]},
-                // plugins:[ChartDataLabels]
               });
             }
           }
