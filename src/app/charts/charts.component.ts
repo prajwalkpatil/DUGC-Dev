@@ -22,19 +22,28 @@ export class ChartsComponent implements OnInit {
   analysis2: any = {};  // prev_year data
   analysis: any = {};
   tempanalysis: any = {};
+  tempanalysis2: any = {};
   temparr: any = {};
+  temparr2: any = {};
   sno : any = 0;
   exam_index:any = 0;
 
+  yValues = [];
+  y2Values = [];
+
   course_count : number = 0;
   course_codes : any = [];
-  a1:string[] = [" ", " ", " ", " ", " "];
-  a2:string[] = [" ", " ", " ", " ", " "];
-  a3:string[] = [" ", " ", " ", " ", " "];
-  a4:string[] = [" ", " ", " ", " ", " "];
-  a5:string[] = [" ", " ", " ", " ", " "];
-  aT:string[] = [" ", " ", " ", " ", " "];
-  avg:string[] = [" ", " ", " ", " ", " "];
+  content : any =  {
+    a1: [" ", " ", " ", " ", " "],
+    a2: [" ", " ", " ", " ", " "],
+    a3: [" ", " ", " ", " ", " "],
+    a4: [" ", " ", " ", " ", " "],
+    a5: [" ", " ", " ", " ", " "],
+    aT: [" ", " ", " ", " ", " "],
+    avg: [" ", " ", " ", " ", " "],
+    pre: [" ", " ", " ", " ", " "]
+  };
+  content_array:any = [];
   div_count :number = 0;
   runThis() {
     this.analysis1 = this.analysis1[this.sem_val];
@@ -55,7 +64,6 @@ export class ChartsComponent implements OnInit {
 
     }
 
-
   ngOnInit(): void {
     this.dataService.getAnalysis().subscribe(
       (resp) => {
@@ -63,12 +71,11 @@ export class ChartsComponent implements OnInit {
         console.log(this.sem_val);
         this.analysis1 = this.analysis['new_data'][this.this_year][this.sem_val];
         this.analysis2 = this.analysis['new_data'][this.prev_year][this.sem_val];
-        console.log(this.analysis1);
-        console.log(this.analysis1);
+        console.log(this.analysis2);
+        this.content_array = [];
         for (let [i,j] of Object.entries(this.analysis1)) {
-          this.course_codes.push(i);
-          this.course_count = this.course_count + 1;
-          // console.log(this.analysis1[i][0]);
+              this.course_codes.push(i);
+              this.course_count = this.course_count + 1;
               if(this.exam_val == 'm1') {
                 this.exam_index = 0;
               }
@@ -79,22 +86,32 @@ export class ChartsComponent implements OnInit {
                 this.exam_index = 2;
               }
               this.tempanalysis = this.analysis1[i][this.exam_index];
-              console.log(this.tempanalysis);
+              this.tempanalysis2 = this.analysis2[i][this.exam_index];
               this.div_count = 0;
               for(let [k,l] of Object.entries(this.tempanalysis)) {
                   this.temparr = this.tempanalysis[k];
-                  console.log("hi");
-                    this.a1[this.div_count] = String(this.temparr['A']);
-                    this.a2[this.div_count] = String(this.temparr['B']);
-                    this.a3[this.div_count] = String(this.temparr['C']);
-                    this.a4[this.div_count] = String(this.temparr['D']);
-                    this.a5[this.div_count] = String(this.temparr['S']);
-                    this.aT[this.div_count] = String(this.temparr['Total']);
-                    this.avg[this.div_count] = String(this.temparr['Average']);
+                  this.temparr2 = this.tempanalysis2[k];
+                    this.content.a1[this.div_count] = String(this.temparr['A']);
+                    this.content.a2[this.div_count] = String(this.temparr['B']);
+                    this.content.a3[this.div_count] = String(this.temparr['C']);
+                    this.content.a4[this.div_count] = String(this.temparr['D']);
+                    this.content.a5[this.div_count] = String(this.temparr['S']);
+                    this.content.aT[this.div_count] = String(this.temparr['Total']);
+                    this.content.avg[this.div_count] = String(this.temparr['Average']);
+                    this.content.pre[this.div_count] = String(this.temparr2['Average']);
                     this.div_count = this.div_count + 1;
               }
-            }
+              this.content_array.push(Object.assign({}, this.content));
+              this.content.a1 = [" ", " ", " ", " ", " "];
+              this.content.a2 = [" ", " ", " ", " ", " "];
+              this.content.a3 = [" ", " ", " ", " ", " "];
+              this.content.a4 = [" ", " ", " ", " ", " "];
+              this.content.a5 = [" ", " ", " ", " ", " "];
+              this.content.aT = [" ", " ", " ", " ", " "];
+              this.content.avg = [" ", " ", " ", " ", " "];
+              this.content.pre = [" ", " ", " ", " ", " "];
           }
+        }
     );
   }
 

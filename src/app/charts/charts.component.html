@@ -74,13 +74,14 @@
         <tr *ngFor="let course_item of course_codes; let myIndex = index">
           <td>{{myIndex + 1}}</td>
           <td>{{course_item}}</td>
-          <td  *ngFor="let num1 of a1; let inIndex = index">{{a1[inIndex]}}</td>
-          <td *ngFor="let num1 of a2">{{num1}}</td>
-          <td *ngFor="let num1 of a3">{{num1}}</td>
-          <td *ngFor="let num1 of a4">{{num1}}</td>
-          <td *ngFor="let num1 of a5">{{num1}}</td>
-          <td *ngFor="let num1 of avg">{{num1}}</td>
-          <td *ngFor="let num1 of aT">{{num1}}</td>
+          <td  *ngFor="let num1 of content_array[myIndex].a1; let inIndex = index">{{num1}}</td>
+		  <td  *ngFor="let num1 of content_array[myIndex].a2; let inIndex = index">{{num1}}</td>
+		  <td  *ngFor="let num1 of content_array[myIndex].a3; let inIndex = index">{{num1}}</td>
+		  <td  *ngFor="let num1 of content_array[myIndex].a4; let inIndex = index">{{num1}}</td>
+		  <td  *ngFor="let num1 of content_array[myIndex].a5; let inIndex = index">{{num1}}</td>
+		  <td  *ngFor="let num1 of content_array[myIndex].aT; let inIndex = index">{{num1}}</td>
+		  <td  *ngFor="let num1 of content_array[myIndex].avg; let inIndex = index">{{num1}}</td>
+		  <td  *ngFor="let num1 of content_array[myIndex].pre; let inIndex = index">{{num1}}</td>
         </tr>
     </table>
   </div>
