@@ -18,6 +18,7 @@ import { ChartsComponent } from './charts/charts.component';
 
 import { DeleteSheetComponent } from './delete-sheet/delete-sheet.component';
 import { UploadResultComponent } from './upload-result/upload-result.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { UploadResultComponent } from './upload-result/upload-result.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
