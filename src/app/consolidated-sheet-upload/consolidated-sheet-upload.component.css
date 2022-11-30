@@ -115,3 +115,7 @@
   display: flex;
   margin-top: 0.5em;
 }
+
+.input-section-title {
+  min-width: 20em;
+}

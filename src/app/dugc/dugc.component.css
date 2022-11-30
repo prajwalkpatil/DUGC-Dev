@@ -21,9 +21,6 @@
   margin: 0.4em;
 }
 
-.form-input {
-  margin-top: 1em;
-}
 
 .input-section-content select {
   padding: 0.1em;
@@ -159,7 +156,23 @@
   margin: 0em 1em;
 }
 
-table,th,td {
-				border: 1px solid black;
-				text-align: center;
+table,
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.input-section-title {
+  min-width: 20em;
+}
+
+.input-section-content select,
+input {
+  padding: 0.1em;
+  font-size: 1em;
+}
+
+.input-section:first-of-type {
+  margin-top: 1em;
 }
