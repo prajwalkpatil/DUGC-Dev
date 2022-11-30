@@ -14,6 +14,8 @@ import { ConsolidatedSheetUploadComponent } from './consolidated-sheet-upload/co
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsComponent } from './charts/charts.component';
+
 import { DeleteSheetComponent } from './delete-sheet/delete-sheet.component';
 import { UploadResultComponent } from './upload-result/upload-result.component';
 @NgModule({
@@ -27,6 +29,7 @@ import { UploadResultComponent } from './upload-result/upload-result.component';
     CoordinatorComponent,
     SingleSheetUploadComponent,
     ConsolidatedSheetUploadComponent,
+    ChartsComponent,
     DeleteSheetComponent,
     UploadResultComponent,
   ],

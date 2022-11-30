@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dugc',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DugcComponent implements OnInit {
 
-  constructor() { }
+  sections: any = ['A', 'B', 'C', 'D', 'E'];
+  exams : any = ['Minor 1', 'Minor 2', 'Activity'];
+  sems : any = ['three', 'four', 'five', 'six', 'seven', 'eight'];
 
-  ngOnInit(): void {
+  inp_sem_type: any;
+  inp_sem_num: any;
+  inp_exam: any;
+
+  constructor(private dataService: DataService,
+    private router: Router
+  ) {}
+
+  ngOnInit() : void {
+
+  }
+  goToURL() {
+      this.dataService.in_sem_val = this.inp_sem_num;
+      this.dataService.in_exam = this.inp_exam;
+    this.router.navigate(['/charts']);
   }
 
 }

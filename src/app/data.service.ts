@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class DataService {
+  in_sem_val:any;
+  in_exam:any;
   URI = `${environment.API_URL}`;
 
   constructor(private _http: HttpClient) {}
