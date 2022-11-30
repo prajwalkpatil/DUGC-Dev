@@ -61,6 +61,8 @@ export class DugcChairmanComponent implements OnInit {
   }
   
   submitForm(): void {
+
+    this.initializeCourses();
    
     if (!this.validateInput()) {
       this.statusMessage = 'ERROR: Invalid or missing field(s)';
@@ -108,9 +110,6 @@ export class DugcChairmanComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
     this.initializeCourses();
-
-    
   }
 }
