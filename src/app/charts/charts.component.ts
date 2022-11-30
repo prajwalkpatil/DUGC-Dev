@@ -3,6 +3,8 @@ import { GetAnalysisService } from '../get-analysis.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
+import Chart from 'chart.js/auto';
+import { DxChartModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-charts',
@@ -28,8 +30,8 @@ export class ChartsComponent implements OnInit {
   sno : any = 0;
   exam_index:any = 0;
 
-  yValues = [];
-  y2Values = [];
+  yValues: any = [];
+  y2Values: any = [];
 
   course_count : number = 0;
   course_codes : any = [];
@@ -71,7 +73,7 @@ export class ChartsComponent implements OnInit {
         console.log(this.sem_val);
         this.analysis1 = this.analysis['new_data'][this.this_year][this.sem_val];
         this.analysis2 = this.analysis['new_data'][this.prev_year][this.sem_val];
-        console.log(this.analysis2);
+        console.log(this.analysis1);
         this.content_array = [];
         for (let [i,j] of Object.entries(this.analysis1)) {
               this.course_codes.push(i);
@@ -102,6 +104,8 @@ export class ChartsComponent implements OnInit {
                     this.div_count = this.div_count + 1;
               }
               this.content_array.push(Object.assign({}, this.content));
+              let yValues:any = this.content.avg;
+              let y2Values:any = this.content.pre;
               this.content.a1 = [" ", " ", " ", " ", " "];
               this.content.a2 = [" ", " ", " ", " ", " "];
               this.content.a3 = [" ", " ", " ", " ", " "];
@@ -110,8 +114,65 @@ export class ChartsComponent implements OnInit {
               this.content.aT = [" ", " ", " ", " ", " "];
               this.content.avg = [" ", " ", " ", " ", " "];
               this.content.pre = [" ", " ", " ", " ", " "];
+
+              for(let o in yValues) {
+                try {
+                  yValues[o] = parseFloat(yValues[o]);
+                }
+                catch(err) {
+                  yValues[o] = 0;
+                }
+              }
+              for(let o in y2Values) {
+                try {
+                  y2Values[o] = parseFloat(y2Values[o]);
+                }
+                catch(err) {
+                  y2Values[o] = 0;
+                }
+              }
+              let xValues: any = ['A', 'B', 'C', 'D', 'E'];
+              let courseName:any = "myChart1";
+              let chartNumber:any = "chartLabel1";
+              let graphName = ""; 
+              let color1 = ["#4cc9f0"];
+              let color2 = ["#70e000"];
+
+              courseName = courseName.split('');
+              courseName[7] = this.course_count;
+              courseName = courseName.join('');
+
+              chartNumber = chartNumber.split('');
+              chartNumber[10] = this.course_count;
+              chartNumber = chartNumber.join('');
+              let tempString = this.course_codes[this.course_count-1] + " : Average Marks";
+              console.log(tempString);
+              (<HTMLInputElement>document.getElementById(chartNumber)).innerHTML = tempString;
+
+              (<HTMLInputElement>document.getElementById(courseName)).style.width = "400%";
+              (<HTMLInputElement>document.getElementById(courseName)).style.maxWidth = "400px";
+              (<HTMLInputElement>document.getElementById(courseName)).style.height = "300%";
+              (<HTMLInputElement>document.getElementById(courseName)).style.maxHeight = "300px";
+              var myChart = new Chart(courseName, {
+                type: "bar",
+                data: {
+                  labels: xValues,
+                  datasets: [{
+                    label: "Current Year",
+                    backgroundColor: color1,
+                    data: yValues
+                  },
+                  {
+                  label: "Previous Year",
+                  backgroundColor: color2,
+                  data: y2Values
+                }]
+                }
+                // ]},
+                // plugins:[ChartDataLabels]
+              });
+            }
           }
-        }
     );
   }
 
