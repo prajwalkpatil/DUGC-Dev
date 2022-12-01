@@ -76,4 +76,20 @@ export class DataService {
     const headers = new HttpHeaders();
     return this._http.post(`${this.URI}/upload_multiple_sheets`, data);
   }
+
+  setFileHeader() {
+    return new HttpHeaders({
+       'Accept': 'application/json',
+    });
+  }
+  uploadFile(fileToUpload : File) {
+
+    console.log("on service");
+    console.log(fileToUpload);
+    let fd = new FormData();
+    fd.append('file',fileToUpload,fileToUpload.name);
+    return this._http.post(`${this.URI}/upload_file`, fd,{headers: this.setFileHeader() })
+      
+  }
+
 }

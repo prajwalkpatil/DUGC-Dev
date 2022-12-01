@@ -75,7 +75,6 @@ export class ChartsComponent implements OnInit {
         console.log(resp);
         this.analysis1 = this.analysis['new_data'][this.this_year][this.sem_val];
         this.analysis2 = this.analysis['new_data'][this.prev_year][this.sem_val];
-        // console.log(this.analysis1);
         this.content_array = [];
         for (let [i,j] of Object.entries(this.analysis1)) {
               this.course_codes.push(i);
@@ -92,12 +91,12 @@ export class ChartsComponent implements OnInit {
               else {
                 this.exam_val = 0;
               }
-              // console.log(this.exam_index);
               this.tempanalysis = this.analysis1[i][this.exam_index];
               this.tempanalysis2 = this.analysis2[i][this.exam_index];
-              // console.log(this.tempanalysis);
+              console.log(this.analysis);
               this.div_count = 0;
               for(let [k,l] of Object.entries(this.tempanalysis)) {
+                  console.log(k);
                   this.temparr = this.tempanalysis[k];
                   this.temparr2 = this.tempanalysis2[k];
                     this.content.a1[this.div_count] = String(this.temparr['D']);
