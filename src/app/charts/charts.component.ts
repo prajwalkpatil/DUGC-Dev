@@ -72,9 +72,10 @@ export class ChartsComponent implements OnInit {
       (resp) => {
         this.analysis = resp;
         console.log(this.sem_val);
+        console.log(resp);
         this.analysis1 = this.analysis['new_data'][this.this_year][this.sem_val];
         this.analysis2 = this.analysis['new_data'][this.prev_year][this.sem_val];
-        console.log(this.analysis1);
+        // console.log(this.analysis1);
         this.content_array = [];
         for (let [i,j] of Object.entries(this.analysis1)) {
               this.course_codes.push(i);
@@ -85,19 +86,24 @@ export class ChartsComponent implements OnInit {
               else if(this.exam_val == 'm2') {
                 this.exam_index = 1;
               }
-              else {
+              else if(this.exam_val == 'Activity'){
                 this.exam_index = 2;
               }
+              else {
+                this.exam_val = 0;
+              }
+              // console.log(this.exam_index);
               this.tempanalysis = this.analysis1[i][this.exam_index];
               this.tempanalysis2 = this.analysis2[i][this.exam_index];
+              // console.log(this.tempanalysis);
               this.div_count = 0;
               for(let [k,l] of Object.entries(this.tempanalysis)) {
                   this.temparr = this.tempanalysis[k];
                   this.temparr2 = this.tempanalysis2[k];
-                    this.content.a1[this.div_count] = String(this.temparr['A']);
-                    this.content.a2[this.div_count] = String(this.temparr['B']);
-                    this.content.a3[this.div_count] = String(this.temparr['C']);
-                    this.content.a4[this.div_count] = String(this.temparr['D']);
+                    this.content.a1[this.div_count] = String(this.temparr['D']);
+                    this.content.a2[this.div_count] = String(this.temparr['C']);
+                    this.content.a3[this.div_count] = String(this.temparr['B']);
+                    this.content.a4[this.div_count] = String(this.temparr['A']);
                     this.content.a5[this.div_count] = String(this.temparr['S']);
                     this.content.aT[this.div_count] = String(this.temparr['Total']);
                     this.content.avg[this.div_count] = String(this.temparr['Average']);
@@ -105,6 +111,7 @@ export class ChartsComponent implements OnInit {
                     this.div_count = this.div_count + 1;
               }
               this.content_array.push(Object.assign({}, this.content));
+              // console.log(this.content_array);
               let yValues:any = this.content.avg;
               let y2Values:any = this.content.pre;
               this.content.a1 = [" ", " ", " ", " ", " "];
@@ -147,7 +154,7 @@ export class ChartsComponent implements OnInit {
               chartNumber[10] = this.course_count;
               chartNumber = chartNumber.join('');
               let tempString = this.course_codes[this.course_count-1] + " : Average Marks";
-              console.log(tempString);
+              // console.log(tempString);
               (<HTMLInputElement>document.getElementById(chartNumber)).innerHTML = tempString;
 
               (<HTMLInputElement>document.getElementById(courseName)).style.width = "400%";
