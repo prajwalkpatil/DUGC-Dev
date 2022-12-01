@@ -100,16 +100,21 @@
                 <div class="input-section-title">
                     <label for="exam">Choose from the spreadsheets directory:</label>
                 </div>
-                <div class="input-section-content">
-                    <input type="file" name="filename" id="filename" accept=".xls,.xlsx" [(ngModel)]="inp.filename"
-                        required>
-                </div>
+                <form action="/upload_file" enctype="multipart/form-data" method="post">
+                    <div class="input-section-content">
+                        <input type="file" name="filename" id="filename" accept=".xls,.xlsx" 
+                        (change)="this.onFilechange($event)"
+                        [(ngModel)]="inp.filename"
+                            required>
+                    </div>
+                </form>
+                
             </div>
             <div class="input-section">
                 <div class="status-message">{{statusMessage}}</div>
             </div>
             <div>
-                <button id="submit-upload" (click)="submitForm()">Submit</button>
+                <button id="submit-upload" (click)="submitForm();upload()" >Submit</button>
                 <button id="reset-button" (click)="resetForm()">Reset</button>
             </div>
         </form>

@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
 import { StatusService } from '../status.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-single-sheet-upload',
   templateUrl: './single-sheet-upload.component.html',
@@ -14,7 +15,29 @@ export class SingleSheetUploadComponent implements OnInit {
     private toastr: ToastrService,
     private statusService: StatusService,
     private router: Router
+   
   ) {}
+  submitted : any 
+
+  file : File | null = null ;
+
+  onFilechange(event: any) {
+    if(event.target.value){
+      this.file = <File> event.target.files[0];
+    }
+  }
+  
+  upload() {
+    this.submitted = true;
+    if (this.file) {
+      this.dataService.uploadFile(this.file).subscribe(resp => {
+        console.log("response file");
+        console.log(resp);
+      })
+    } else {
+      alert("Please select a file first")
+    }
+  }
   inp: any = {
     academic_year: '2022-23',
     sem_type: '',
@@ -40,6 +63,7 @@ export class SingleSheetUploadComponent implements OnInit {
   analysis: any = {};
   statusMessage = '';
   courses: any = [];
+
   changeCourses(): void {
     try {
       this.selectedCourse = this.courses[this.inp.semester];
@@ -113,7 +137,8 @@ export class SingleSheetUploadComponent implements OnInit {
       return false;
     }
   }
-
+ 
+  
   ngOnInit(): void {
     this.dataService.getCourses().subscribe(
       (resp) => {

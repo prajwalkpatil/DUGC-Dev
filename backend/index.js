@@ -10,6 +10,15 @@ let constants = require('../src/constants.json')
 const { listenerCount } = require("process");
 const excelToJson = require('convert-excel-to-json');
 var fileManager = require('express-file-manager');
+const multer = require('multer');
+const { isImportEqualsDeclaration } = require('typescript');
+const PATH = './spreadsheets';
+
+
+
+
+// const axios = require('axios');
+// const FormData = require('form-data');
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +38,32 @@ const getCourseName = function (code, course_file) {
         }
     }
 }
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, PATH);
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  });
+
+  const upload = multer({storage : storage}).single('file');
+
+function uploadFiles(req, res) {
+     req.ContentType = "multipart/form-data";
+     console.log(req.body);
+     console.log(req.files);
+     res.json({ message: "Successfully uploaded files" });
+ }
+
+ app.post('/upload_file',function(req,res){
+    upload(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        res.json(req.file);
+    });
+});
 
 app.get('/filemanager/raw%5C:fileName', function (req, res) {
     const { fileName } = req.params;
@@ -368,5 +403,8 @@ app.get("*", (req, res) => {
 app.listen(constants.BACKEND_PORT, () => {
     console.log("Listening on port ", constants.BACKEND_PORT);
 })
+
+
+
 
 
