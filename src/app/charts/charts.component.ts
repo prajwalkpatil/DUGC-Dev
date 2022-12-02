@@ -72,8 +72,8 @@ export class ChartsComponent implements OnInit {
       (resp) => {
         this.analysis = resp;
         console.log(this.sem_val);
-        console.log(resp);
         this.analysis1 = this.analysis['new_data'][this.this_year][this.sem_val];
+        console.log(this.analysis1);  
         this.analysis2 = this.analysis['new_data'][this.prev_year][this.sem_val];
         this.content_array = [];
         for (let [i,j] of Object.entries(this.analysis1)) {
@@ -86,17 +86,18 @@ export class ChartsComponent implements OnInit {
                 this.exam_index = 1;
               }
               else if(this.exam_val == 'Activity'){
-                this.exam_index = 2;
+                this.exam_index = 1;
               }
               else {
                 this.exam_val = 0;
               }
               this.tempanalysis = this.analysis1[i][this.exam_index];
+              console.log(this.tempanalysis);
               this.tempanalysis2 = this.analysis2[i][this.exam_index];
-              console.log(this.analysis);
               this.div_count = 0;
               for(let [k,l] of Object.entries(this.tempanalysis)) {
                   console.log(k);
+                  console.log(l);
                   this.temparr = this.tempanalysis[k];
                   this.temparr2 = this.tempanalysis2[k];
                     this.content.a1[this.div_count] = String(this.temparr['D']);
@@ -110,7 +111,7 @@ export class ChartsComponent implements OnInit {
                     this.div_count = this.div_count + 1;
               }
               this.content_array.push(Object.assign({}, this.content));
-              // console.log(this.content_array);
+              console.log(this.content_array);
               let yValues:any = this.content.avg;
               let y2Values:any = this.content.pre;
               this.content.a1 = [" ", " ", " ", " ", " "];
