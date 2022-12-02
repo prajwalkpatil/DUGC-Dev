@@ -112,8 +112,10 @@ export class ChartsComponent implements OnInit {
               }
               this.content_array.push(Object.assign({}, this.content));
               console.log(this.content_array);
-              let yValues:any = this.content.avg;
-              let y2Values:any = this.content.pre;
+              console.log("hihihi");
+              console.log(this.content.avg);
+              this.yValues = this.content.avg;
+              this.y2Values = this.content.pre;
               this.content.a1 = [" ", " ", " ", " ", " "];
               this.content.a2 = [" ", " ", " ", " ", " "];
               this.content.a3 = [" ", " ", " ", " ", " "];
@@ -123,22 +125,22 @@ export class ChartsComponent implements OnInit {
               this.content.avg = [" ", " ", " ", " ", " "];
               this.content.pre = [" ", " ", " ", " ", " "];
 
-              for(let o in yValues) {
-                try {
-                  yValues[o] = parseFloat(yValues[o]);
-                }
-                catch(err) {
-                  yValues[o] = 0;
-                }
-              }
-              for(let o in y2Values) {
-                try {
-                  y2Values[o] = parseFloat(y2Values[o]);
-                }
-                catch(err) {
-                  y2Values[o] = 0;
-                }
-              }
+              // for(let o in this.yValues) {
+              //   try {
+              //     this.yValues[o] = parseFloat(this.yValues[o]);
+              //   }
+              //   catch(err) {
+              //     this.yValues[o] = 0;
+              //   }
+              // }
+              // for(let o in this.y2Values) {
+              //   try {
+              //     this.y2Values[o] = parseFloat(this.y2Values[o]);
+              //   }
+              //   catch(err) {
+              //     this.y2Values[o] = 0;
+              //   }
+              // }
               let xValues: any = ['A', 'B', 'C', 'D', 'E'];
               let courseName:any = "myChart1";
               let chartNumber:any = "chartLabel1";
@@ -168,12 +170,12 @@ export class ChartsComponent implements OnInit {
                   datasets: [{
                     label: "Current Year",
                     backgroundColor: color1,
-                    data: yValues
+                    data: this.yValues
                   },
                   {
                   label: "Previous Year",
                   backgroundColor: color2,
-                  data: y2Values
+                  data: this.y2Values
                 }]
                 }
               });
